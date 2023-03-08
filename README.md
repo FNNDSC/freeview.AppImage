@@ -5,6 +5,24 @@ This repository provides a way to build an
 [freeview](https://surfer.nmr.mgh.harvard.edu/fswiki/FreeviewGuide/FreeviewIntroduction)
 using Linux containers.
 
+## Motivation
+
+`freeview` is a GUI program from FreeSurfer. It can be hard to get working
+because of its graphical dependencies (libGL and Qt). Typically, installation
+and dependency hell is solved by Linux containers, however it is inconvenient
+to run GUI applications using a container runtime.
+[AppImage](https://appimage.org/) solves this problem by providing a
+user-friendly solution for packaging (typically GUI) programs with their 
+dependencies into a single executable file.
+
+Another problem is that often, a user wants to use just `freeview`
+(a common user story is to run `recon_all` in a container on a computer
+cluster, e.g. via [_ChRIS_](https://chrisproject.org)).
+The status quo of how to obtain `freeview` is by downloading the entire
+FreeSurfer package, which is a 14GiB in size. It is slow to download and
+wasteful of disk space.
+Our solution packages `freeview` in a single 109MiB file.
+
 ## Installation
 
 ```shell
@@ -15,7 +33,7 @@ using Linux containers.
 export FS_LICENSE=...
 
 # download freeview
-wget 'https://github.com/FNNDSC/freeview.AppImage/releases/download/release%2Ffreesurfer-7.3.2%2F1/freeview.AppImage'
+wget 'https://github.com/FNNDSC/freeview.AppImage/releases/download/release%2Ffreesurfer-v7.3.2%2F1/freeview.AppImage'
 chmod +x freeview.AppImage
 
 # alright! it's ready to use.
@@ -32,4 +50,3 @@ wget -O /tmp/brain.nii 'https://github.com/FNNDSC/SAG-anon-nii/raw/b04fab8ec5a03
 # or, if installed for all users:
 freeview /tmp/brain.nii
 ```
-
