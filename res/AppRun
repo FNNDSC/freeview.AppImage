@@ -1,5 +1,19 @@
 #!/bin/bash -e
 
+# required FreeSurfer environment variable
+if ! [ -v FREESURFER_HOME ]; then
+  export FREESURFER_HOME=/tmp
+fi
+
+# if license not given...
+if ! [ -v FS_LICENSE ] && ! [ -f "$FREESURFER_HOME/.license" ]; then
+  # use FNNDSC FreeSurfer license if available
+  FNNDSC_LICENSE="/neuro/arch/$(uname -s)-$(uname -m)/packages/freesurfer/stable"
+  if [ -f "$FNNDSC_LICENSE" ]; then
+    export FS_LICENSE="$FNNDSC_LICENSE"
+  fi
+fi
+
 export LD_LIBRARY_PATH="$APPDIR/usr/local/freesurfer/lib:$APPDIR/usr/lib64:$APPDIR/usr/lib:$LD_LIBRARY_PATH"
 export QT_PLUGIN_PATH="$APPDIR/usr/local/freesurfer/lib/qt/plugins"
 export LIBGL_DRIVERS_PATH="$APPDIR/usr/lib64/dri"
