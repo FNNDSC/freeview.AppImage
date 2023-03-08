@@ -50,3 +50,19 @@ wget -O /tmp/brain.nii 'https://github.com/FNNDSC/SAG-anon-nii/raw/b04fab8ec5a03
 # or, if installed for all users:
 freeview /tmp/brain.nii
 ```
+
+## Build
+
+Instructions for developers of `freeview.AppImage`
+
+Requirements:
+
+- Linux on x86_64 architecture
+- GNU coreutils
+- GNU make
+- wget
+- Docker or Podman
+
+```shell
+make
+```
