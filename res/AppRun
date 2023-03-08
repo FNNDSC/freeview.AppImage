@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+export LD_LIBRARY_PATH="$APPDIR/usr/local/freesurfer/lib:$APPDIR/usr/lib64:$APPDIR/usr/lib:$LD_LIBRARY_PATH"
+export QT_PLUGIN_PATH="$APPDIR/usr/local/freesurfer/lib/qt/plugins"
+export LIBGL_DRIVERS_PATH="$APPDIR/usr/lib64/dri"
+exec "$APPDIR/usr/local/freesurfer/bin/freeview" "$@"

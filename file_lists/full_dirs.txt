@@ -1,0 +1,3 @@
+/usr/lib64/dri
+/usr/local/freesurfer/lib/vtk
+/usr/local/freesurfer/lib/qt

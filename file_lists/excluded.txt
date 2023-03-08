@@ -1,0 +1,7 @@
+/usr/share/fonts
+/usr/lib/locale
+cache
+libc.so
+libpthread.so
+librt.so
+libdl.so

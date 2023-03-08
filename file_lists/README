@@ -1,0 +1,2 @@
+Lists of files manually specified to be included or excluded from the freesurfer container.
+These files are read by ../extract_freeview_binaries.sh
