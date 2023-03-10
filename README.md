@@ -33,7 +33,7 @@ Our solution packages `freeview` in a single 109MiB file.
 export FS_LICENSE=...
 
 # download freeview
-wget 'https://github.com/FNNDSC/freeview.AppImage/releases/download/release%2Ffreesurfer-v7.3.2%2F1/freeview.AppImage'
+wget 'https://github.com/FNNDSC/freeview.AppImage/releases/download/release%2Ffreesurfer-7.3.2%2F1/freeview.AppImage'
 chmod +x freeview.AppImage
 
 # alright! it's ready to use.
