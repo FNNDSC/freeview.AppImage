@@ -59,6 +59,9 @@ docker rm freeview-copier
 cd "$HERE/freesurfer-copied-binaries"
 cd usr/lib64
 ln -sv libffi.so.6.0.2 libffi.so.6
+ln -sv libGLU.so.1.3.1 libGLU.so.1
+ln -sv libgfortran.so.5.0.0 libgfortran.so.5
+ln -sv libquadmath.so.0.0.0 libquadmath.so.0
 
 # clean up
 set +e
