@@ -33,7 +33,7 @@ Our solution packages `freeview` in a single 109MiB file.
 export FS_LICENSE=...
 
 # download freeview
-wget -O freeview.AppImage 'https://github.com/FNNDSC/freeview.AppImage/releases/download/release%2Ffreesurfer-7.3.2%2F2/Freeview-7.3.2.build2-x86_64.AppImage'
+wget -O freeview.AppImage 'https://github.com/FNNDSC/freeview.AppImage/releases/download/release%2Ffreesurfer-7.3.2%2F3/Freeview-7.3.2.build3-x86_64.AppImage'
 chmod +x freeview.AppImage
 
 # alright! it's ready to use.
@@ -66,3 +66,7 @@ Requirements:
 ```shell
 make
 ```
+
+### Debugging
+
+Try playing around with these variables: https://docs.mesa3d.org/envvars.html

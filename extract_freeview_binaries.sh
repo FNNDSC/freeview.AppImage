@@ -55,13 +55,32 @@ docker run --name freeview-copier -v "$tmpdir/needed.txt:/needed.txt:ro" $IMAGE 
 docker cp freeview-copier:/dist "$HERE/freesurfer-copied-binaries"
 docker rm freeview-copier
 
-# manual fixes
+# example: for a file called libsomething.so.1.2.3.4, creates symbolic links
+# libsomething.so libsomething.so.1 libsomething.so.1.2 libsomething.so.1.2.3
+function link_aliases () {
+  local short_name=
+  local short_name_builder=
+  for part in $(tr '.' '\n' <<< $1); do
+    if [ -z "$short_name" ]; then
+      short_name_builder="$short_name_builder.$part"
+      if [ "$part" = 'so' ]; then
+        short_name="${short_name_builder:1}"  # remove leading .
+        ln -sv $1 $short_name
+      fi
+    else
+      short_name="$short_name.$part"
+      if ! [ -f "$short_name" ]; then
+        ln -sv $1 $short_name
+      fi
+    fi
+  done
+}
+
 cd "$HERE/freesurfer-copied-binaries"
 cd usr/lib64
-ln -sv libffi.so.6.0.2 libffi.so.6
-ln -sv libGLU.so.1.3.1 libGLU.so.1
-ln -sv libgfortran.so.5.0.0 libgfortran.so.5
-ln -sv libquadmath.so.0.0.0 libquadmath.so.0
+for so in *.so.*; do
+  link_aliases $so
+done
 
 # clean up
 set +e
