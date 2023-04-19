@@ -8,7 +8,7 @@ fi
 # if license not given...
 if ! [ -v FS_LICENSE ] && ! [ -f "$FREESURFER_HOME/.license" ]; then
   # use FNNDSC FreeSurfer license if available
-  FNNDSC_LICENSE="/neuro/arch/$(uname -s)-$(uname -m)/packages/freesurfer/stable"
+  FNNDSC_LICENSE="/neuro/arch/Linux64/packages/freesurfer/stable/.license"
   if [ -f "$FNNDSC_LICENSE" ]; then
     export FS_LICENSE="$FNNDSC_LICENSE"
   fi
